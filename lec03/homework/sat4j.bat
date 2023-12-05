@@ -1,0 +1,1 @@
+java -jar sat4j-core-2.0rc1.jar %*
