@@ -1,0 +1,17 @@
+formula = set of clauses
+
+clause =  var1 or var2 or .... or varn
+
+pure literal = variable that appears only 1 time
+
+unit clause = clause of length 1 = clause with only 1 variable
+
+split = choose a variable and choose true/false for this variable
+
+-----
+Davis Putnam:
+easy cases
+	pure literal = make literal true
+	unit clause = make variable true
+hard case
+	split = make the right choice ????? <- strategy
