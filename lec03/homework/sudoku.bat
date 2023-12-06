@@ -1,1 +1,0 @@
-java -Xmx300m -jar sudoku.jar

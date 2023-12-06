@@ -202,3 +202,4 @@ fabric.properties
 **/_site/*
 **/.ignore/*
 **/.vscode/*
+*.mp4

@@ -1,0 +1,65 @@
+<d?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>homework.html</title>
+
+</head>
+
+<body>
+
+<h1 id="homework-hyper-sudokus">Homework: Hyper Sudoku's</h1>
+<p>Your challenge will be to use a SAT solver (sat4j) to solve not just a normal sudoku, but a hyper sudoku. A hyper sudoku is a normal sudoku, but besides all the normal rules (all numbers of 1-9 in each row, column and 3x3 square) there are now 4 additional squares in the middle of the puzzle, and these must be filled with all numbers 1-9).</p>
+<p>Here is an example of a hyper sudoku:</p>
+<p><IMG SRC="example3.jpg" WIDTH=200p></p>
+<p>Hypersudoku's are quite hard for people, and actually for people the hyper-sudoku is harder than the normal sudoku. We will see that a SAT solver can solve even a hyper-sudoku quite fast.</p>
+<h2 id="task-1">Task 1</h2>
+<p>The file <a href="https://www.cs.vu.nl/~frankh/spool/sudoku-rules.txt" class="uri">https://www.cs.vu.nl/~frankh/spool/sudoku-rules.txt</a> contains all the rules of a normal sudoku in clausal form. Read the various types of clauses and understand what they say, and what sudoku-rule they encode.</p>
+<h2 id="task-2">Task 2</h2>
+<p>Formulate the additional rules for Hyper Suduku's in clausal form (the 4 inner squares must also be filled with all numbers 0-9. Add these files to <code>sudoku-rule.txt</code> and save it as <code>hypersudoku-rules.txt</code>.</p>
+<h2 id="task-3">Task 3</h2>
+<ol style="list-style-type: decimal">
+<li>Use <a href="http://www.sudoku-space.com/hyper-sudoku/print-hyper-sudoku.php" class="uri">http://www.sudoku-space.com/hyper-sudoku/print-hyper-sudoku.php</a> to  a hyper sudoku. Write these values in clausal form, and save these to a file, eg. <a href="https://www.cs.vu.nl/~frankh/spool/sudoku1.txt" class="uri">https://www.cs.vu.nl/~frankh/spool/sudoku1.txt</a> is the clausal form of the example in the figure above.</li>
+<li>Combine the rules from <code>hypersudoku-rules.txt</code> with the input in sudoku1.txt into a new file <code>sudoku1+hypersudoku-rules.txt</code>.</li>
+<li>Use <code>java -jar sat4j-core-2.0rc1.jar sudoku1+hypersudoku-rules.txt</code> to let the SAT4 solver solve the puzzle</li>
+<li>save the list of resulting variable values to a file, eg <code>solution1.txt</code> (in the output of sat4j that is the line starting with &quot;v &quot;). If the output instead says &quot;UNSATISFIABLE&quot; you have made a mistake in formulating the additional rules or in adding the initial values.</li>
+<li><p>Now check if your solution is correct. You can do this for instance by printing the <code>solution1.txt</code> file in a readable format, such as</p>
+<pre><code>        3 4 6 1 9 8 5 2 7
+        7 5 1 3 4 2 9 8 6
+        8 2 9 7 5 6 4 3 1
+        9 6 8 4 2 5 7 1 3
+        2 3 7 8 1 9 6 4 5
+        5 1 4 6 3 7 8 9 2
+        6 7 2 9 8 3 1 5 4
+        1 8 3 5 7 4 2 6 9
+        4 9 5 2 6 1 3 7 8</code></pre></li>
+</ol>
+<p>and then check if it satisfies all the rules of a hyper sudoku (0-9 in every column, row, the nine 3x3 outside squares and the four 3x3 inside squares. (The above solution is a correct hyper-sudoku solution of the exapmle in the figure above; can you see that it is not only a correct sudoku solution, but also a correct <em>hyper</em> sudoku solution?</p>
+<p>If it is not a correct solution for a hyper-sudoku, you have made a mistake (for example in formulating the additional rules or in adding the initial values) and you have to fix it.</p>
+<h2 id="task-4">Task 4</h2>
+<p>Of course, you can also solve your sudoku as a normal sudoku, without the extra hyper-sudoku clauses . Just combine <code>sudoku-rules.txt</code> with <code>sudoku1.txt</code> into one file, then use sat4j to solve this sudoku. You cam compare the runtimes of sat4j when solving the sudoku under the normal rules (from <code>sudoku-rules.txt</code>) or under the rules for hyper sudokus (from <code>hypersudoku-rules.txt</code>).</p>
+<ol style="list-style-type: decimal">
+<li>First predict which will be faster: solving the same puzzle as a normal sudoku, or as a hyper sudoku?</li>
+<li>Then run a number of experiments to compare the sta4j runtimes on the same puzzle, but under the two different rule sets. What do you observe? Can you explain this?</li>
+</ol>
+<h2 id="you-will-have-to-hand-in">You will have to hand in:</h2>
+<ol style="list-style-type: decimal">
+<li><strong>task 2:</strong> your file <code>hypersudoku-rules.txt</code></li>
+<li><strong>task 3:</strong> one example of the input clauses for a hyper sudoku</li>
+<li><strong>task 3:</strong> the output clauses for the corresponding solution of that hyper sudoku</li>
+<li><strong>task 4:</strong> 5-10 lines discussing why you think a hyper-sudoku is harder or easier to solve for a computer than a normal sudoku.</li>
+</ol>
+<h2 id="tools">Tools:</h2>
+<p>The interactive SuDoKu tool at <a href=
+"https://bob-carpenter.github.io/games/sudoku/java_sudoku.html"
+class="uri">https://bob-carpenter.github.io/games/sudoku/java_sudoku.html</a>. </p>
+<p>The sat4j solver, download it from
+<a href="https://www.cs.vu.nl/~frankh/spool/sat4j-core-2.0rc1.jar" class="uri">
+https://www.cs.vu.nl/~frankh/spool/sat4j-core-2.0rc1.jar
+</a> and run it as <code>java -jar sat4j-core-2.0rc1.jar your-file</code></p>
+
+</body>
+</html>
