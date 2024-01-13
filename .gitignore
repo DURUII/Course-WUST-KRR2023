@@ -203,3 +203,5 @@ fabric.properties
 **/.ignore/*
 **/.vscode/*
 *.mp4
+*~$*
+*narrated*
