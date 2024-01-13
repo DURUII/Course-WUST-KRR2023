@@ -1,0 +1,84 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{geometry}
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+\usepackage[title]{appendix}
+
+\geometry{top=10mm,bottom=10mm,left=10mm,right=10mm}
+\begin{document}
+
+% \maketitle
+
+\subsubsection{Question 1}
+
+Use the tableau algorithm 
+to test the satisfiability of 
+$\exists S.C \sqcap \forall S.(\neg C \sqcup \neg D) \sqcap \exists R.C$
+(Hint: to test the satisfiability of a concept X, you have to show that it is possible for some element y to be member of X, in other words you have to use a tableau to construct a model for y:X).
+
+\subsubsection{Answer 1}
+
+We try to construct a model:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+1 \qquad \qquad & $y: \exists S.C \sqcap \forall S.(\neg C \sqcup \neg D) \sqcap \exists R.C$ & ~ \qquad \qquad $\mathcal{A}$ \qquad \qquad ~ \\
+2 & $y: \exists S.C$  & ($\sqcap: 1$) \\
+3 & $y: \forall S.(\neg C \sqcup \neg D)$  & ($\sqcap: 1$) \\
+4 & $y: \exists R.C$  & ($\sqcap: 1$) \\
+5 & $(y, p): S$  & ($\exists: 2$) \\
+6 & $p: C$  & ($\exists: 2$) \\
+7 & $(y, q): R$  & ($\exists: 4$) \\
+8 & $q: C$  & ($\exists: 4$) \\
+9 & $p: \neg C \sqcup \neg D$ & ($\forall: 3, 5$)\\
+$10^{\text{split}_1}$ & $p: \neg C $ & ($\sqcup: 9$)\\
+$11^{\text{split}_1}$ & \text{clash} & ($6, 10^1$)\\
+$10^{\text{split}_2}$ & $p: \neg D$ & ($\sqcup: 9$)\\
+\end{tabular}
+\end{table}
+
+A model exists that demonstrates the satisfiability.
+
+\subsubsection{Question 2}
+Given the following interpretation of the concepts
+\begin{itemize}
+    \item Person = \{Daisy, Dan, Dirk, Pat, Paul\}
+    \item Doctor = \{Daisy, Dan, Dirk\}
+    \item Patient = \{Pat, Paul, Dan\}
+    \item Treats = \{(Daisy, Pat), (Dan, Paul), (Dirk, Dan), (Dan, Dan)\} 
+    \item Suffers\_from =\{(Pat, pain), (Paul, pain), (Dan, pain), (Dan, sickness)\}
+\end{itemize}
+
+Compute the interpretation of the following expressions:
+
+a) Doctor $\sqcap$ Patient 
+
+b) Person $\sqcap$ $\exists$treats.Doctor
+
+\subsubsection{Answer 2} \qquad
+
+
+a) (Doctor $\sqcap$ Patient)$^\mathcal{I} = \{\text{Dan}\}$
+
+b) (Person $\sqcap$ $\exists$treats.Doctor)$^\mathcal{I} = \{\text{Dirk}, \text{Dan}\}$
+
+
+\subsubsection{Question 3}
+Show that from the knowledge base: $P \sqsubseteq (E \sqcap U) \sqcup (E \sqcap \neg D)$
+
+we can derive that $P \sqsubseteq E$
+
+\subsubsection{Answer 3} 
+
+we have to show that $a: P \sqcap \neg E$ is not satisfiable given that the TBox is not empty.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{tp.png}
+\end{figure}
+
+Yes, given the TBox, P is subsumed by E.
+
+\end{document}
