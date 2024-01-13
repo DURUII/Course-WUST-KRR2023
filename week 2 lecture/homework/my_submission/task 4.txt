@@ -1,0 +1,7 @@
+First predict which will be faster: solving the same puzzle as a normal sudoku, or as a hyper sudoku?
+
+**My Answer: I would guess that normal sudoku might be faster because the number of feasible solutions of normal sudoku is greater than or equal to that of hyper sudoku, given that any hyper sudoku solution must be a normal sudoku solution.**
+
+Then run a number of experiments to compare the sta4j runtimes on the same puzzle, but under the two different rule sets. What do you observe? Can you explain this?
+
+**My Answer: The observation is that the CPU times are quite close to each other. This shows the applicability of the algorithm to industry.**
